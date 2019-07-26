@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module PostsHelper
-
   def create_new_post_partial_path
     if user_signed_in?
       'posts/branch/create_new_post/signed_in'
