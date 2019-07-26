@@ -1,6 +1,8 @@
-require "rails_helper"
+# frozen_string_literal: true
 
-RSpec.feature "Create a new post", :type => :feature do
+require 'rails_helper'
+
+RSpec.feature 'Create a new post', type: :feature do
   let(:user) { create(:user) }
   before(:each) { sign_in user }
 
