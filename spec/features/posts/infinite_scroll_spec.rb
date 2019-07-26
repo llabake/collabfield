@@ -1,11 +1,13 @@
-require "rails_helper"
+# frozen_string_literal: true
 
-RSpec.feature "Infinite scroll", :type => :feature do
+require 'rails_helper'
+
+RSpec.feature 'Infinite scroll', type: :feature do
   Post.per_page = 15
 
   let(:check_posts_count) do
     expect(page).to have_selector('.single-post-list', count: 15)
-    page.execute_script("$(window).scrollTop($(document).height())")
+    page.execute_script('$(window).scrollTop($(document).height())')
     expect(page).to have_selector('.single-post-list', count: 30)
   end
 
@@ -29,5 +31,4 @@ RSpec.feature "Infinite scroll", :type => :feature do
     visit team_posts_path
     check_posts_count
   end
-
 end
