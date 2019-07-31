@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Private::Message < ApplicationRecord
   self.table_name = 'private_messages'
 
