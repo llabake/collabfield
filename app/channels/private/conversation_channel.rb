@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Private::ConversationChannel < ApplicationCable::Channel
   def subscribed
     # stream_from "some_channel"
@@ -7,5 +9,13 @@ class Private::ConversationChannel < ApplicationCable::Channel
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
     stop_all_streams
+  end
+
+  def send_message(data)
+    binding.pry
+    message_params = data['message'].each_with_object({}) do |el, hash|
+      hash[el['name']] = el['value']
+    end
+    Private::Message.create(message_params)
   end
 end
