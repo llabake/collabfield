@@ -12,7 +12,6 @@ class Private::ConversationChannel < ApplicationCable::Channel
   end
 
   def send_message(data)
-    binding.pry
     message_params = data['message'].each_with_object({}) do |el, hash|
       hash[el['name']] = el['value']
     end
