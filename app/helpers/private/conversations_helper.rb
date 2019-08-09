@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module Private::ConversationsHelper
+  include Shared::ConversationsHelper
+
   # get the opposite user of the conversation
   def private_conv_recipient(conversation)
     conversation.opposed_user(current_user)

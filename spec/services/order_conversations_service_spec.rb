@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 require './app/services/order_conversations_service.rb'
 
@@ -12,7 +14,7 @@ describe OrderConversationsService do
                              sender_id: user.id,
                              messages: [create(:private_message)])
       conversations = [conversation2, conversation1]
-      expect(OrderConversationsService.new({user: user}).call).to eq conversations
+      expect(OrderConversationsService.new(user: user).call).to eq conversations
     end
   end
 end
