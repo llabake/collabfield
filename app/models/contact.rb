@@ -11,4 +11,6 @@ class Contact < ApplicationRecord
       where('user_id = ? AND contact_id = ?', contact_id, user_id)
     )[0]
   end
+
+  after_create_commit { ContactRequestBroadcastJob.perform_later(self) }
 end
